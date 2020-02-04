@@ -13,20 +13,20 @@ namespace contractors.Controllers
 {
   [ApiController]
   [Route("api/[controller]")]
-  public class ContractorsController : ControllerBase
+  public class JobsController : ControllerBase
   {
-    private readonly ContractorsService _cs;
-    public ContractorsController(ContractorsService cs)
+    private readonly JobsService _js;
+    public JobsController(JobsService js)
     {
-      _cs = cs;
+      _js = js;
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Contractor>> Get()
+    public ActionResult<IEnumerable<Job>> Get()
     {
       try
       {
-        return Ok(_cs.Get());
+        return Ok(_js.Get());
       }
       catch (Exception e)
       {
@@ -36,11 +36,11 @@ namespace contractors.Controllers
 
     [Authorize]
     [HttpGet("{id}")]
-    public ActionResult<Contractor> Get(int id)
+    public ActionResult<Job> Get(int id)
     {
       try
       {
-        return Ok(_cs.Get(id));
+        return Ok(_js.Get(id));
       }
       catch (Exception e)
       {
@@ -51,11 +51,11 @@ namespace contractors.Controllers
 
     [Authorize]
     [HttpPost]
-    public ActionResult<Contractor> Create([FromBody] Contractor newContractor)
+    public ActionResult<Job> Create([FromBody] Job newJob)
     {
       try
       {
-        return Ok(_cs.Create(newContractor));
+        return Ok(_js.Create(newJob));
       }
       catch (Exception e)
       {
@@ -70,7 +70,7 @@ namespace contractors.Controllers
     {
       try
       {
-        return Ok(_cs.Delete(id));
+        return Ok(_js.Delete(id));
       }
       catch (Exception e)
       {

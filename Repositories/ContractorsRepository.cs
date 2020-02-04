@@ -38,10 +38,10 @@ namespace contractors.Repositories
 
 
 
-    public void Delete(int id, string userId)
+    public void Delete(int id)
     {
       string sql = "DELETE FROM contractors WHERE id = @id";
-      _db.Execute(sql, new { id, userId });
+      _db.Execute(sql, new { id });
     }
 
 

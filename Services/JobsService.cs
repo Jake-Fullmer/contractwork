@@ -5,31 +5,31 @@ using contractors.Repositories;
 
 namespace contractors.Services
 {
-  public class ContractorsService
+  public class JobsService
   {
-    private readonly ContractorsRepository _repo;
-    public ContractorsService(ContractorsRepository repo)
+    private readonly JobsRepository _repo;
+    public JobsService(JobsRepository repo)
     {
       _repo = repo;
     }
 
-    public IEnumerable<Contractor> Get()
+    public IEnumerable<Job> Get()
     {
       return _repo.Get();
     }
 
-    public Contractor Get(int id)
+    public Job Get(int id)
     {
-      Contractor exists = _repo.Get(id);
+      Job exists = _repo.Get(id);
       if (exists == null) { throw new Exception("Invalid Id Homie"); }
       return exists;
     }
 
-    public Contractor Create(Contractor newContractor)
+    public Job Create(Job newJob)
     {
-      int id = _repo.Create(newContractor);
-      newContractor.Id = id;
-      return newContractor;
+      int id = _repo.Create(newJob);
+      newJob.Id = id;
+      return newJob;
     }
     public string Delete(int id)
     {
