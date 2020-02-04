@@ -22,5 +22,47 @@ namespace contractors.Controllers
     }
 
 
+
+    [Authorize]
+    [HttpGet("{id}")]
+    public ActionResult<Bid> GetBids(int id)
+    {
+      try
+      {
+        return Ok(_bs.GetContractors(id));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+    [Authorize]
+    [HttpPost]
+    public ActionResult<string> AddBidToJob([FromBody] Bid bid)
+    {
+      try
+      {
+        return Ok(_bs.AddContractor(bid.ContractorId, bid.JobId));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
+
+    [Authorize]
+    [HttpPut]
+    public ActionResult<string> RemoveBidFromJob([FromBody] Bid bid)
+    {
+      try
+      {
+        return Ok(_bs.RemoveContractor(bid));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
   }
 }
