@@ -23,7 +23,7 @@ namespace contractors.Controllers
 
 
 
-    [Authorize]
+
     [HttpGet("{id}")]
     public ActionResult<Bid> GetBids(int id)
     {
@@ -36,13 +36,13 @@ namespace contractors.Controllers
         return BadRequest(e.Message);
       }
     }
-    [Authorize]
+
     [HttpPost]
     public ActionResult<string> AddBidToJob([FromBody] Bid bid)
     {
       try
       {
-        return Ok(_bs.AddContractor(bid.ContractorId, bid.JobId));
+        return Ok(_bs.AddContractor(bid.ContractorId, bid.JobId, bid.Price));
       }
       catch (Exception e)
       {
@@ -51,7 +51,7 @@ namespace contractors.Controllers
     }
 
 
-    [Authorize]
+
     [HttpPut]
     public ActionResult<string> RemoveBidFromJob([FromBody] Bid bid)
     {

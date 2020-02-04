@@ -53,6 +53,10 @@ namespace contractors
 
       services.AddTransient<ContractorsService>();
       services.AddTransient<ContractorsRepository>();
+      services.AddTransient<JobsService>();
+      services.AddTransient<JobsRepository>();
+      services.AddTransient<BidsService>();
+      services.AddTransient<BidsRepository>();
     }
     private IDbConnection CreateDBContext()
     {

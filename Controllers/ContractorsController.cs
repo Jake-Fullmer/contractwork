@@ -34,7 +34,6 @@ namespace contractors.Controllers
       }
     }
 
-    [Authorize]
     [HttpGet("{id}")]
     public ActionResult<Contractor> Get(int id)
     {
@@ -49,7 +48,6 @@ namespace contractors.Controllers
     }
 
 
-    [Authorize]
     [HttpPost]
     public ActionResult<Contractor> Create([FromBody] Contractor newContractor)
     {
@@ -64,7 +62,6 @@ namespace contractors.Controllers
     }
 
 
-    [Authorize]
     [HttpDelete("{id}")]
     public ActionResult<string> Delete(int id)
     {

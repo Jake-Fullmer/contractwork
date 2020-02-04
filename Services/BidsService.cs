@@ -20,31 +20,33 @@ namespace contractors.Services
 
 
 
-    public string AddContractor(int contractorId, int jobId)
+    public string AddContractor(int contractorId, int jobId, int price)
     {
       Job job = _jrepo.Get(jobId);
       if (job == null) { throw new Exception("Invalid Job Id Homie"); }
       Contractor contractorToAdd = _crepo.Get(contractorId);
       if (contractorToAdd == null) { throw new Exception("Invalid Contractor Id Homie"); }
-      _repo.AddContractor(jobId, contractorId);
+      _repo.AddContractor(jobId, contractorId, price);
       return "Successfully added Contractor to Job";
     }
 
 
-    public IEnumerable<Contractor> GetContractors(int jobId)
+    public IEnumerable<Bid> GetContractors(int jobId)
     {
       Job job = _jrepo.Get(jobId);
       if (job == null) { throw new Exception("Invalid Id Homie"); }
-      return _repo.GetContractorsByJobId(jobId);
+      return _repo.GetBidsByJobId(jobId);
 
     }
 
-    public string RemoveContractor(Bid bid)
+    public string RemoveContractor(Bid bidInfo)
     {
-      Bid job = _repo.GetBid(bid);
-      if (job == null) { throw new Exception("Invalid Info Homie"); }
-      _repo.RemoveContractorFromJob(job.Id);
+      Bid bid = _repo.GetBid(bidInfo);
+      if (bid == null) { throw new Exception("Invalid Info Homie"); }
+      _repo.RemoveContractorFromJob(bid.Id);
       return "Successfully Booted";
     }
+
+
   }
 }
