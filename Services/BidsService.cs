@@ -18,34 +18,31 @@ namespace contractors.Services
       _jrepo = jrepo;
     }
 
-
-
     public string AddContractor(int contractorId, int jobId, int price)
     {
       Job job = _jrepo.Get(jobId);
-      if (job == null) { throw new Exception("Invalid Job Id Homie"); }
+      if (job == null) { throw new Exception("Invalid Job Id"); }
       Contractor contractorToAdd = _crepo.Get(contractorId);
-      if (contractorToAdd == null) { throw new Exception("Invalid Contractor Id Homie"); }
+      if (contractorToAdd == null) { throw new Exception("Invalid contractor Id"); }
       _repo.AddContractor(jobId, contractorId, price);
-      return "Successfully added Contractor to Job";
+      return "You added a contractor to this bid";
     }
-
 
     public IEnumerable<Bid> GetContractors(int jobId)
     {
       Job job = _jrepo.Get(jobId);
-      if (job == null) { throw new Exception("Invalid Id Homie"); }
+      if (job == null) { throw new Exception("Invalid Job Id"); }
       return _repo.GetBidsByJobId(jobId);
 
     }
 
-    public string RemoveContractor(Bid bidInfo)
-    {
-      Bid bid = _repo.GetBid(bidInfo);
-      if (bid == null) { throw new Exception("Invalid Info Homie"); }
-      _repo.RemoveContractorFromJob(bid.Id);
-      return "Successfully Booted";
-    }
+    // public string RemoveContractor(Bid bidInfo)
+    // {
+    //   Bid bid = _repo.GetBid(bidInfo);
+    //   if (bid == null) { throw new Exception("Invalid Info Homie"); }
+    //   _repo.RemoveContractorFromJob(bid.Id);
+    //   return "Successfully Booted";
+    // }
 
 
   }

@@ -52,17 +52,17 @@ namespace contractors.Controllers
 
 
 
-    [HttpPut]
-    public ActionResult<string> RemoveBidFromJob([FromBody] Bid bid)
-    {
-      try
-      {
-        return Ok(_bs.RemoveContractor(bid));
-      }
-      catch (Exception e)
-      {
-        return BadRequest(e.Message);
-      }
-    }
+    // [HttpPut]
+    // public ActionResult<string> RemoveBidFromJob([FromBody] Bid bid)
+    // {
+    //   try
+    //   {
+    //     return Ok(_bs.RemoveContractor(bid));
+    //   }
+    //   catch (Exception e)
+    //   {
+    //     return BadRequest(e.Message);
+    //   }
+    // }
   }
 }

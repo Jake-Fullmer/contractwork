@@ -1,3 +1,3 @@
 ALTER TABLE bids
-DROP COLUMN userId;
+ADD COLUMN price int NOT NULL;
 
