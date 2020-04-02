@@ -18,15 +18,16 @@ namespace contractors.Repositories
       return _db.QueryFirstOrDefault<Bid>(sql, bid);
     }
 
-    public IEnumerable<Bid> GetBidsByJobId(int jobId)
+    public IEnumerable<BidViewModel> GetBidsByJobId(int jobId)
     {
       string sql = @"
-                SELECT * FROM bids b
-                INNER JOIN contractors c ON c.id = b.contractorId
+                SELECT *, c.name as contractorName FROM bids b
+                INNER JOIN contractors c ON c.id = b.contractorId 
                 WHERE (jobId = @jobId) 
             ";
-      return _db.Query<Bid>(sql, new { jobId });
+      return _db.Query<BidViewModel>(sql, new { jobId });
     }
+
     public void AddContractor(int jobId, int contractorId, int price)
     {
       string sql = @"

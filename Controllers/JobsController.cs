@@ -16,9 +16,11 @@ namespace contractors.Controllers
   public class JobsController : ControllerBase
   {
     private readonly JobsService _js;
-    public JobsController(JobsService js)
+    private readonly BidsService _bs;
+    public JobsController(JobsService js, BidsService bs)
     {
       _js = js;
+      _bs = bs;
     }
 
     [HttpGet]
@@ -48,6 +50,18 @@ namespace contractors.Controllers
       }
     }
 
+    [HttpGet("{id}/bids")]
+    public ActionResult<BidViewModel> GetContractorBids(int id)
+    {
+      try
+      {
+        return Ok(_bs.GetContractorBids(id));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
 
 
     [HttpPost]

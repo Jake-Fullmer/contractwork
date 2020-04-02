@@ -12,4 +12,11 @@ namespace contractors.Models
 
 
   }
+
+  public class BidViewModel : Bid
+  {
+    public string ContractorName { get; set; }
+  }
+
+
 }

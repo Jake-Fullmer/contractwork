@@ -23,19 +23,19 @@ namespace contractors.Controllers
 
 
 
-
-    [HttpGet("{id}")]
-    public ActionResult<Bid> GetBids(int id)
-    {
-      try
-      {
-        return Ok(_bs.GetContractors(id));
-      }
-      catch (Exception e)
-      {
-        return BadRequest(e.Message);
-      }
-    }
+    //by job id
+    // [HttpGet("{id}")]
+    // public ActionResult<Bid> GetBids(int id)
+    // {
+    //   try
+    //   {
+    //     return Ok(_bs.GetContractorBids(id));
+    //   }
+    //   catch (Exception e)
+    //   {
+    //     return BadRequest(e.Message);
+    //   }
+    // }
 
     [HttpPost]
     public ActionResult<string> AddBidToJob([FromBody] Bid bid)

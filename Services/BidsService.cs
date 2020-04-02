@@ -28,7 +28,7 @@ namespace contractors.Services
       return "You added a contractor to this bid";
     }
 
-    public IEnumerable<Bid> GetContractors(int jobId)
+    public IEnumerable<BidViewModel> GetContractorBids(int jobId)
     {
       Job job = _jrepo.Get(jobId);
       if (job == null) { throw new Exception("Invalid Job Id"); }
