@@ -21,7 +21,7 @@ namespace contractors.Repositories
     public IEnumerable<BidViewModel> GetBidsByJobId(int jobId)
     {
       string sql = @"
-                SELECT *, c.name as contractorName FROM bids b
+                SELECT *, c.name as contractorName, b.id as id FROM bids b
                 INNER JOIN contractors c ON c.id = b.contractorId 
                 WHERE (jobId = @jobId) 
             ";
